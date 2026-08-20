@@ -205,50 +205,17 @@ h3{font-size:clamp(19px,4vw,24px);}
   margin:0 auto 40px;
 }
 
-/* mockup (placeholder em CSS — trocar por foto/render real do produto quando disponível) */
-.mockup-stage{
-  position:relative;
-  max-width:340px;
-  margin:0 auto 40px;
-  padding-top:20px;
+/* mockup */
+.hero-img-wrap{
+  max-width:420px;
+  margin:0 auto 36px;
 }
-.mockup-book{
-  position:relative;
-  background:linear-gradient(160deg,#2a2f37 0%,#1a1d22 100%);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:34px 22px;
-  box-shadow:0 30px 60px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06);
-  transform:rotate(-3deg);
+.hero-img-wrap img{
+  width:100%;
+  height:auto;
+  border-radius:16px;
+  box-shadow:0 30px 60px rgba(0,0,0,.55);
 }
-.mockup-book::before{
-  content:"";
-  position:absolute;
-  left:-10px;top:8px;bottom:8px;width:10px;
-  background:linear-gradient(180deg,#3a4048,#15171b);
-  border-radius:6px 0 0 6px;
-}
-.mockup-stripe{height:5px;background:repeating-linear-gradient(135deg,var(--yellow) 0 10px,#111 10px 20px);border-radius:4px;margin-bottom:18px;}
-.mockup-kicker{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;}
-.mockup-title{font-size:26px;font-weight:900;text-transform:uppercase;line-height:1.1;margin-bottom:6px;}
-.mockup-title span{color:var(--orange);}
-.mockup-sub{font-size:12.5px;color:var(--text-dim);margin-bottom:18px;}
-.mockup-badges{display:flex;flex-wrap:wrap;gap:6px;}
-.mockup-badge{font-size:10.5px;font-weight:700;background:var(--panel-2);border:1px solid var(--border);padding:5px 9px;border-radius:6px;color:var(--text-dim);}
-.mockup-card2{
-  position:absolute;
-  right:-16px;
-  bottom:-22px;
-  width:64%;
-  background:linear-gradient(160deg,#252a31,#181b20);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:14px;
-  transform:rotate(6deg);
-  box-shadow:0 20px 40px rgba(0,0,0,.5);
-}
-.mockup-card2 .mockup-kicker{font-size:9.5px;margin-bottom:4px;}
-.mockup-card2 .mockup-title{font-size:14px;}
 
 /* price block */
 .price-block{
@@ -478,8 +445,18 @@ h3{font-size:clamp(19px,4vw,24px);}
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:22px;
+  overflow:hidden;
 }
+.bonus-img{
+  width:100%;
+  height:auto;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  object-position:top center;
+  display:block;
+  background:var(--bg);
+}
+.bonus-body{padding:20px 22px 22px;}
 .bonus-top{
   display:flex;
   justify-content:space-between;
@@ -690,7 +667,7 @@ footer{
   .cost-grid{grid-template-columns:repeat(2,1fr);}
   .qa-grid{grid-template-columns:repeat(2,1fr);}
   .pkg-grid{grid-template-columns:repeat(2,1fr);align-items:start;}
-  .mockup-stage{max-width:400px;}
+  .hero-img-wrap{max-width:480px;}
 }
 @media (min-width:960px){
   .modules{grid-template-columns:repeat(2,1fr);}
@@ -709,22 +686,8 @@ footer{
     <h2>Método ACP: avalie, calcule e precifique cada serviço antes de fechar — considerando tempo, material, dificuldade e margem.</h2>
     <p class="mech-inline">🔧 O nome já diz: Avaliar → Calcular → Precificar</p>
 
-    <div class="mockup-stage">
-      <!-- Mockup ilustrativo do produto (substituir por render/foto real quando disponível) -->
-      <div class="mockup-book">
-        <div class="mockup-stripe"></div>
-        <div class="mockup-kicker">Manual Digital · PDF</div>
-        <div class="mockup-title">MÉTODO<br><span>ACP</span></div>
-        <div class="mockup-sub">Avaliar, Calcular, Precificar</div>
-        <div class="mockup-badges">
-          <span class="mockup-badge">10 capítulos</span>
-          <span class="mockup-badge">+3 bônus no Completo</span>
-        </div>
-      </div>
-      <div class="mockup-card2">
-        <div class="mockup-kicker">Bônus</div>
-        <div class="mockup-title">Calculadora<br>de Orçamento</div>
-      </div>
+    <div class="hero-img-wrap">
+      <img src="mockup-hero.webp" alt="Manual Método ACP em capa impressa, ao lado dos 3 cartões que resumem o método Avaliar, Calcular, Precificar" width="1000" height="1249" loading="eager" fetchpriority="high">
     </div>
 
     <div class="price-block">
@@ -909,33 +872,42 @@ footer{
 
     <div class="bonus-grid">
       <div class="bonus-card">
-        <div class="bonus-top">
-          <span class="bonus-label">Bônus 1</span>
-          <span class="bonus-value"><s>R$47</s> <b>Grátis hoje</b></span>
+        <img class="bonus-img" src="mockup-bonus-01.webp" alt="Capa do Bônus 1 — Calculadora de Orçamento do Funileiro" width="900" height="1124" loading="lazy">
+        <div class="bonus-body">
+          <div class="bonus-top">
+            <span class="bonus-label">Bônus 1</span>
+            <span class="bonus-value"><s>R$47</s> <b>Grátis hoje</b></span>
+          </div>
+          <h3>Calculadora de Orçamento do Funileiro</h3>
+          <p>Planilha onde você insere horas de mão de obra, materiais, desmontagem, extras e margem, e chega a uma referência de preço.</p>
+          <div class="bonus-example">Preencha os campos, veja o preço sugerido, ajuste com segurança.</div>
         </div>
-        <h3>Calculadora de Orçamento do Funileiro</h3>
-        <p>Planilha onde você insere horas de mão de obra, materiais, desmontagem, extras e margem, e chega a uma referência de preço.</p>
-        <div class="bonus-example">Preencha os campos, veja o preço sugerido, ajuste com segurança.</div>
       </div>
 
       <div class="bonus-card">
-        <div class="bonus-top">
-          <span class="bonus-label">Bônus 2</span>
-          <span class="bonus-value"><s>R$27</s> <b>Grátis hoje</b></span>
+        <img class="bonus-img" src="mockup-bonus-02.webp" alt="Capa do Bônus 2 — Checklist Antes de Passar o Valor" width="900" height="1124" loading="lazy">
+        <div class="bonus-body">
+          <div class="bonus-top">
+            <span class="bonus-label">Bônus 2</span>
+            <span class="bonus-value"><s>R$27</s> <b>Grátis hoje</b></span>
+          </div>
+          <h3>Checklist Antes de Passar o Valor</h3>
+          <p>Checklist visual pra avaliar o carro antes do orçamento: extensão do dano, acesso, desmontagem, alinhamento, peças próximas, acabamento, dificuldade, prazo e risco.</p>
+          <div class="bonus-example">Percorra o carro com o checklist antes de abrir a boca pra falar preço.</div>
         </div>
-        <h3>Checklist Antes de Passar o Valor</h3>
-        <p>Checklist visual pra avaliar o carro antes do orçamento: extensão do dano, acesso, desmontagem, alinhamento, peças próximas, acabamento, dificuldade, prazo e risco.</p>
-        <div class="bonus-example">Percorra o carro com o checklist antes de abrir a boca pra falar preço.</div>
       </div>
 
       <div class="bonus-card">
-        <div class="bonus-top">
-          <span class="bonus-label">Bônus 3</span>
-          <span class="bonus-value"><s>R$37</s> <b>Grátis hoje</b></span>
+        <img class="bonus-img" src="mockup-bonus-03.webp" alt="Capa do Bônus 3 — Tabela de Custos Invisíveis" width="900" height="1124" loading="lazy">
+        <div class="bonus-body">
+          <div class="bonus-top">
+            <span class="bonus-label">Bônus 3</span>
+            <span class="bonus-value"><s>R$37</s> <b>Grátis hoje</b></span>
+          </div>
+          <h3>Tabela de Custos Invisíveis</h3>
+          <p>Guia pra lembrar dos custos que o orçamento costuma esquecer de considerar.</p>
+          <div class="bonus-example">Consulta rápida pra não deixar nenhum custo de fora da conta.</div>
         </div>
-        <h3>Tabela de Custos Invisíveis</h3>
-        <p>Guia pra lembrar dos custos que o orçamento costuma esquecer de considerar.</p>
-        <div class="bonus-example">Consulta rápida pra não deixar nenhum custo de fora da conta.</div>
       </div>
     </div>
   </div>
